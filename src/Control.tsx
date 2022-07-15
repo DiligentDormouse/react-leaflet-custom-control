@@ -22,7 +22,8 @@ const Control = (props: Props): JSX.Element => {
   const portalContainer = document.createElement('div')
 
   React.useEffect(() => {
-    setPortalRoot(props.targetDivId)
+    const targetDiv = (props.mapContainerRef?.current ?? document).getElementsByClassName(positionClass)
+    setPortalRoot(targetDiv[0])
   }, [positionClass])
 
   if (props.prepend !== undefined && props.prepend === true) {
